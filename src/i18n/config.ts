@@ -1,47 +1,47 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-// Import translations from shared-logic library
 import {
   commonEn,
   homePageEn,
   commonJp,
   homePageJp,
   LANGUAGES,
+  newsDetailPageEn,
+  newsDetailPageJp,
 } from '@umamusumeenjoyer/shared-logic';
 
 export { LANGUAGES };
 
-// Define constants locally if import fails
 const DEFAULT_LANG = 'en';
 const DEFAULT_NS = 'common';
 
-// Cấu hình i18next với translations từ shared-logic
 i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next)
   .init({
     resources: {
       en: {
         common: commonEn,
         HomePage: homePageEn,
+        NewsDetailPage: newsDetailPageEn,
       },
       jp: {
         common: commonJp,
         HomePage: homePageJp,
+        NewsDetailPage: newsDetailPageJp,
       },
     },
-    lng: localStorage.getItem('language') || DEFAULT_LANG, // Lấy từ localStorage hoặc dùng mặc định
+    lng: localStorage.getItem('language') || DEFAULT_LANG,
     fallbackLng: DEFAULT_LANG,
     defaultNS: DEFAULT_NS,
-    ns: ['common', 'HomePage'],
+    ns: ['common', 'HomePage', 'NewsDetailPage'],
     interpolation: {
-      escapeValue: false, // React đã escape sẵn
+      escapeValue: false,
     },
     react: {
-      useSuspense: false, // Tắt suspense để tránh lỗi với React 19
+      useSuspense: false,
     },
   });
 
-// Lưu ngôn ngữ vào localStorage khi thay đổi
 i18n.on('languageChanged', (lng) => {
   localStorage.setItem('language', lng);
 });

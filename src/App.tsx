@@ -5,6 +5,7 @@ import './App.css';
 import './i18n/config'; // Import i18n configuration
 import { ThemeProvider } from './context/ThemeContext';
 import HomePage from './pages/HomePage/HomePage';
+import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage';
 
 // Khởi tạo shared-logic với localStorage và API base URL
 initSharedLogic({
@@ -19,7 +20,7 @@ initSharedLogic({
 function App() {
   useEffect(() => {
     // --- Thay đổi Tiêu đề (Title) ---
-    document.title = "MyAnilist";
+    document.title = "Zentaku";
 
     // --- Thay đổi Logo (Favicon) ---
     const updateFavicon = (url: string) => {
@@ -41,6 +42,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/news/:id" element={<NewsDetailPage />} />
           </Routes>
         </main>
       </Router>
