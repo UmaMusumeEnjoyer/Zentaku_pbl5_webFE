@@ -1,0 +1,558 @@
+/* src/pages/HomePage.css */
+
+/* =========================================
+   1. GLOBAL & RESET (Đã gộp từ 2 phần trùng lặp)
+   ========================================= */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #121212; /* Giữ màu nền gốc của bạn */
+  color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+section {
+  padding: 4rem 5%; /* Padding chung gốc */
+}
+
+/* =========================================
+   2. PHẦN ANIME STYLE (Video, Trending, News)
+   ========================================= */
+
+/* --- Video Section --- */
+.videoSection {
+  position: relative;
+  width: 100%;
+  height: 76vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; 
+}
+
+.videoBackground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.textContainer {
+  max-width: 50%;
+}
+
+.textContainer h3 {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.textContainer p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+}
+
+.signUpButton {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.signUpButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+}
+
+/* --- Trending Section (Anime Grid) --- */
+.trendingSection {
+  background-color: #1a1a1a;
+}
+
+.animeGrid {
+  display: grid;
+  /* Giữ nguyên logic Desktop gốc: tối thiểu 280px */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.animeCard {
+  background: #242424;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* [Lưu ý] Chỉ hover trên thiết bị có chuột */
+@media (hover: hover) {
+  .animeCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.animeCard img {
+  width: 100%;
+  height: 400px; /* Giữ chiều cao gốc cho PC */
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 1.5rem;
+}
+
+.cardContent h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardContent p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.cardButton {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.animeCard:hover .cardButton {
+  color: #3399ff;
+}
+
+/* --- Genre Section --- */
+.genreSection {
+  background-color: #121212;
+}
+
+.genreChips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.genreChip {
+  padding: 0.75rem 1.75rem;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.genreChip:hover {
+  background: #007bff;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* --- Latest News Section --- */
+.latestNewsSection {
+  background-color: #1a1a1a;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.newsArticle {
+  background: #242424;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.newsArticle img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.newsContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.newsContent h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.newsContent p {
+  color: #ccc;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.readMoreLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.readMoreLink:hover {
+  text-decoration: underline;
+}
+
+/* --- Footer --- */
+.footer {
+  padding: 2.5rem 5%;
+  background: #000;
+  text-align: center;
+  color: #888;
+}
+
+.footerLinks {
+  margin-bottom: 1rem;
+}
+
+.footerLinks a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s;
+}
+
+.footerLinks a:hover {
+  color: #007bff;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   3. PHẦN SAAS/HERO STYLE (Hero, Features, ClientLogos)
+   (Đã khôi phục lại phần này từ file gốc của bạn)
+   ========================================= */
+
+.heroSection {
+    background-color: #1a1a2e;
+    padding: 6rem 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.heroContent {
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+    color: #ffffff;
+}
+
+.heroContent h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.heroContent p {
+    font-size: 1.3rem;
+    color: #b0b0d0;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.heroImage {
+    flex: 1;
+    min-width: 300px;
+    text-align: right;
+}
+
+.heroImage img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.clientLogos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.clientLogos img {
+    max-height: 40px;
+    filter: grayscale(100%) brightness(150%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.clientLogos img:hover {
+    filter: grayscale(0%) brightness(100%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.featuresSection {
+    background-color: #1a1a1a;
+    padding: 5rem 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.featuresTextContent {
+    flex: 1;
+    min-width: 350px;
+    max-width: 550px;
+    color: #ffffff;
+}
+
+.featuresLabel {
+    display: inline-block;
+    background-color: #3a3a5e;
+    color: #a0a0ff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.featuresTextContent h2 {
+    text-align: left;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.featuresIntro {
+    font-size: 1.1rem;
+    color: #c0c0c0;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.featureItem {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    gap: 1.5rem;
+}
+
+.featureIcon {
+    font-size: 1.8rem;
+    color: #4CAF50;
+    background-color: #2e2e4a;
+    padding: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.featureDetails h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.featureDetails p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    line-height: 1.5;
+}
+
+.featuresImage {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.featuresImage img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   4. MOBILE & RESPONSIVE FIXES (THÊM MỚI)
+   (Phần này nằm cuối cùng để ghi đè khi cần thiết, 
+   không làm hỏng style PC ở trên)
+   ========================================= */
+
+@media (max-width: 992px) {
+    /* Fix Hero Section trên Tablet */
+    .heroSection {
+        flex-direction: column;
+        text-align: center;
+    }
+    .heroContent {
+        max-width: 100%;
+        min-width: auto;
+    }
+    .heroImage {
+        order: -1; 
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Fix Features Section */
+    .featuresSection {
+        flex-direction: column;
+        text-align: center;
+    }
+    .featuresTextContent h2 {
+        text-align: center;
+    }
+    .featureItem {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* --- Fix Video Section Mobile --- */
+    .contentContainer {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    .textContainer {
+        max-width: 100%;
+    }
+    .textContainer h3 {
+        font-size: 2.2rem;
+    }
+    .signUpButton {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+    }
+
+    /* --- Fix Anime Grid Mobile (QUAN TRỌNG) --- */
+    /* Gốc của bạn là minmax(280px, 1fr) -> Sẽ bị 1 cột trên mobile.
+       Tôi đổi thành minmax(160px, 1fr) để được 2 cột. */
+    .animeGrid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+    }
+    
+    /* Điều chỉnh ảnh cho vừa grid 2 cột */
+    .animeCard img {
+        height: 220px; /* Giảm chiều cao cho cân đối với chiều rộng hẹp */
+    }
+    
+    .cardContent {
+        padding: 10px;
+    }
+    .cardContent h3 {
+        font-size: 1rem;
+    }
+    /* Ẩn bớt mô tả nếu quá chật */
+    .cardContent p {
+        display: none; 
+    }
+    .videoSection {
+    /* Đặt height: auto để nó giãn theo nội dung text bên trong */
+    height: auto; 
+    
+    /* NHƯNG phải có min-height (ví dụ 80% màn hình) để video có không gian hiển thị */
+    min-height: 80vh; 
+    
+    padding-bottom: 40px;
+  }
+
+    /* --- Fix Hero & Features Font Size --- */
+    .heroContent h1 {
+        font-size: 2.5rem;
+    }
+    .featuresTextContent h2 {
+        font-size: 2.2rem;
+    }
+    .clientLogos img {
+        max-height: 30px;
+    }
+    
+    /* Fix Features Image & Content width */
+    .featuresTextContent, .featuresImage, .heroImage {
+        min-width: 100%;
+    }
+}
