@@ -1,17 +1,23 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import commonEn from './locales/en/common.json';
-import homePageEn from './locales/en/HomePage.json';
-import commonVi from './locales/vi/common.json';
-import homePageVi from './locales/vi/HomePage.json';
-import commonJp from './locales/jp/common.json';
-import homePageJp from './locales/jp/HomePage.json';
+// Import translations from shared-logic library
+import {
+  commonEn,
+  homePageEn,
+  commonVi,
+  homePageVi,
+  commonJp,
+  homePageJp,
+  LANGUAGES,
+} from '@umamusumeenjoyer/shared-logic';
 
-export const LANGUAGES = ['vi', 'en', 'jp'] as const;
+export { LANGUAGES };
+
+// Define constants locally if import fails
 const DEFAULT_LANG = 'en';
 const DEFAULT_NS = 'common';
 
-// Cấu hình i18next
+// Cấu hình i18next với translations từ shared-logic
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({

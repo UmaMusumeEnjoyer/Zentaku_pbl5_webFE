@@ -134,9 +134,7 @@ section {
   z-index: 2;
 }
 
-body[data-theme="light"] .videoOverlay {
-  background: var(--overlay-light);
-}
+
 
 .contentContainer {
   position: relative;
@@ -168,15 +166,7 @@ body[data-theme="light"] .videoOverlay {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-body[data-theme="light"] .textContainer h3 {
-  color: var(--text-primary-light);
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
-}
 
-body[data-theme="light"] .textContainer p {
-  color: var(--text-secondary-light);
-  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
-}
 
 .signUpButton {
   background-color: #007bff;
@@ -203,7 +193,7 @@ body[data-theme="light"] .textContainer p {
 
 body[data-theme="light"] .trendingSection {
   background-color: var(--bg-secondary-light);
-  border-top: 1px solid var(--section-border-light);
+  border-top: none;
 }
 
 .animeGrid {
@@ -287,8 +277,8 @@ body[data-theme="light"] .cardContent p {
 
 body[data-theme="light"] .genreSection {
   background-color: var(--bg-primary-light);
-  border-top: 1px solid var(--section-border-light);
-  border-bottom: 1px solid var(--section-border-light);
+  border-top: none;
+  border-bottom: none;
 }
 
 .genreChips {
@@ -328,7 +318,7 @@ body[data-theme="light"] .genreChip {
 
 body[data-theme="light"] .latestNewsSection {
   background-color: var(--bg-secondary-light);
-  border-top: 1px solid var(--section-border-light);
+  border-top: none;
 }
 
 .newsGrid {
@@ -437,7 +427,7 @@ body[data-theme="light"] .newsContent p {
 
 body[data-theme="light"] .heroSection {
     background-color: var(--hero-bg-light);
-    border-bottom: 1px solid var(--section-border-light);
+    border-bottom: none;
 }
 
 .heroContent {
@@ -515,8 +505,8 @@ body[data-theme="light"] .heroContent p {
 
 body[data-theme="light"] .featuresSection {
     background-color: var(--bg-secondary-light);
-    border-top: 1px solid var(--section-border-light);
-    border-bottom: 1px solid var(--section-border-light);
+    border-top: none;
+    border-bottom: none;
 }
 
 .featuresTextContent {
