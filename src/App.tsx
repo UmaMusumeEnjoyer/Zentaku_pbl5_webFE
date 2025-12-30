@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { initSharedLogic } from '@umamusumeenjoyer/shared-logic';
 import './App.css';
 import './i18n/config'; // Import i18n configuration
+import { ThemeProvider } from './context/ThemeContext';
 import HomePage from './pages/HomePage/HomePage';
 
 // Khởi tạo shared-logic với localStorage và API base URL
@@ -35,13 +36,15 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-      </main>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </main>
+      </Router>
+    </ThemeProvider>
   );
 }
 
