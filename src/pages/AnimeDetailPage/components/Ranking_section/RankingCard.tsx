@@ -1,8 +1,13 @@
-// src/components/RankingCard.js
+// src/components/RankingCard.tsx
 import React from 'react';
+import type { Ranking } from '@umamusumeenjoyer/shared-logic';
 import './RankingCard.css';
 
-const RankingCard = ({ ranking }) => {
+interface RankingCardProps {
+  ranking: Ranking;
+}
+
+const RankingCard: React.FC<RankingCardProps> = ({ ranking }) => {
   // Chọn icon dựa trên loại xếp hạng
   const getIcon = () => {
     switch (ranking.type) {
