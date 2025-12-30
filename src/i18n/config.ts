@@ -4,8 +4,6 @@ import { initReactI18next } from 'react-i18next';
 import {
   commonEn,
   homePageEn,
-  commonVi,
-  homePageVi,
   commonJp,
   homePageJp,
   LANGUAGES,
@@ -25,10 +23,6 @@ i18n
       en: {
         common: commonEn,
         HomePage: homePageEn,
-      },
-      vi: {
-        common: commonVi,
-        HomePage: homePageVi,
       },
       jp: {
         common: commonJp,

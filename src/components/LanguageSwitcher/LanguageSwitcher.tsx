@@ -11,13 +11,11 @@ const LanguageSwitcher: React.FC = () => {
   };
 
   const languageNames: Record<string, string> = {
-    vi: 'Tiếng Việt',
     en: 'English',
     jp: '日本語',
   };
 
   const languageFlags: Record<string, string> = {
-    vi: '🇻🇳',
     en: '🇬🇧',
     jp: '🇯🇵',
   };
