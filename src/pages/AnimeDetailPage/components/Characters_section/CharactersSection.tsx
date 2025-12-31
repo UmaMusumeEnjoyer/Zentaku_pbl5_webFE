@@ -2,22 +2,25 @@
 import React from 'react';
 import CharacterCard from './CharacterCard';
 import { useAnimeCharacters } from '@umamusumeenjoyer/shared-logic';
+import { useTranslation } from 'react-i18next'; // Import hook dịch
 import './CharactersSection.css';
 
 interface CharactersSectionProps {
-  animeId: number | string; // Hỗ trợ cả string id từ URL hoặc number
+  animeId: number | string;
 }
 
 const CharactersSection: React.FC<CharactersSectionProps> = ({ animeId }) => {
-  // Sử dụng custom hook để lấy data
+  const { t } = useTranslation('CharactersSection'); // Hook lấy hàm dịch
   const { characters, loading } = useAnimeCharacters(animeId);
 
   if (loading) {
-    return <div>Loading characters...</div>;
+    // Tách text cứng "Loading characters..."
+    return <div>{t('characters.loading')}</div>;
   }
 
   if (!characters || characters.length === 0) {
-    return <p>No character information available.</p>;
+    // Tách text cứng "No character information available."
+    return <p>{t('characters.no_info')}</p>;
   }
 
   return (
