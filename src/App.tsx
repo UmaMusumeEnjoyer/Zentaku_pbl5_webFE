@@ -6,6 +6,7 @@ import './i18n/config'; // Import i18n configuration
 import { ThemeProvider } from './context/ThemeContext';
 import HomePage from './pages/HomePage/HomePage';
 import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage';
+import CharacterPage from './pages/CharacterPage/CharacterPage';
 
 // Khởi tạo shared-logic với localStorage và API base URL
 initSharedLogic({
@@ -14,7 +15,7 @@ initSharedLogic({
     setItem: (key: string, value: string) => localStorage.setItem(key, value),
     removeItem: (key: string) => localStorage.removeItem(key),
   },
-  apiBaseUrl: 'https://doannguyen.pythonanywhere.com/api'
+  apiBaseUrl: '/api' // Sử dụng proxy để tránh CORS
 });
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/news/:id" element={<NewsDetailPage />} />
+            <Route path="/character/:id" element={<CharacterPage />} />
           </Routes>
         </main>
       </Router>

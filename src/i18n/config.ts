@@ -8,6 +8,8 @@ import {
   LANGUAGES,
   newsDetailPageEn,
   newsDetailPageJp,
+  characterPageEn,
+  characterPageJp,
 } from '@umamusumeenjoyer/shared-logic';
 
 export { LANGUAGES };
@@ -23,17 +25,19 @@ i18n
         common: commonEn,
         HomePage: homePageEn,
         NewsDetailPage: newsDetailPageEn,
+        CharacterPage: characterPageEn,
       },
       jp: {
         common: commonJp,
         HomePage: homePageJp,
         NewsDetailPage: newsDetailPageJp,
+        CharacterPage: characterPageJp,
       },
     },
     lng: localStorage.getItem('language') || DEFAULT_LANG,
     fallbackLng: DEFAULT_LANG,
     defaultNS: DEFAULT_NS,
-    ns: ['common', 'HomePage', 'NewsDetailPage'],
+    ns: ['common', 'HomePage', 'NewsDetailPage', 'CharacterPage'],
     interpolation: {
       escapeValue: false,
     },

@@ -1,0 +1,287 @@
+/* src/pages/CharacterPage.module.css */
+.pageWrapper {
+    background-color: #152232;
+    color: #c2c2c2;
+    padding: 40px 8%;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.themeToggleContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.loading {
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    min-height: 80vh;
+    padding-top: 50px;
+}
+
+.mainContent {
+    display: grid;
+    grid-template-columns: 225px 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.leftColumn {
+    width: 100%;
+    /* Để ảnh dính lên trên khi scroll nếu muốn (sticky), 
+       nếu không thì giữ nguyên width: 100% là đủ */
+}
+
+.characterImage {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* [QUAN TRỌNG] Ngăn text dài phá vỡ layout grid/flex */
+}
+
+.characterName {
+    font-size: 2.2rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.nativeName {
+    font-size: 1rem;
+    margin: 5px 0 25px 0;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.extraInfoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.extraInfoGrid p {
+    margin: 0;
+}
+.extraInfoGrid strong {
+    color: #fff;
+}
+
+
+.description {
+    line-height: 1.7;
+    white-space: pre-wrap; /* Giữ nguyên các dấu xuống dòng */
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.spoiler {
+    background-color: #46546b;
+    color: #46546b;
+    padding: 2px 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+.spoiler:hover {
+    background-color: #576885;
+    color: #fff; /* Hover thì hiện chữ để người dùng biết có thể click */
+}
+
+.spoilerRevealed {
+    background-color: transparent;
+    color: inherit;
+    cursor: text;
+}
+.spoilerRevealed:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
+.mediaSection {
+    border-top: 1px solid #2a3a50;
+    padding-top: 30px;
+}
+.mediaSection h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.mediaGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.mediaCard {
+    text-decoration: none;
+    color: #c2c2c2;
+    font-size: 0.85rem;
+    display: block; /* Để link bao trọn card */
+}
+
+.mediaCard img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.mediaCard:hover img {
+    transform: translateY(-5px);
+}
+.mediaCard p {
+    margin: 0;
+    /* Xử lý text dài cho tên phim/diễn viên */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* =========================================
+   [RESPONSIVE] MOBILE ADJUSTMENTS
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Tổng thể Page */
+    .pageWrapper {
+        padding: 20px 16px; /* Padding nhỏ gọn hơn */
+    }
+
+    /* 2. Layout Chính: 1 Cột */
+    .mainContent {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    /* 3. Ảnh nhân vật */
+    .leftColumn {
+        display: flex;
+        justify-content: center;
+    }
+
+    .characterImage {
+        width: 200px; /* Giới hạn chiều rộng ảnh để không quá to trên đt */
+        max-width: 70%;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    /* 4. Thông tin text */
+    .rightColumn {
+        /* Có thể căn giữa header nếu muốn layout cân đối với ảnh */
+        text-align: center; 
+    }
+    
+    .characterName {
+        font-size: 1.8rem;
+    }
+    
+    .description {
+        text-align: left; /* Description nên căn trái cho dễ đọc */
+        font-size: 0.9rem;
+    }
+
+    .extraInfoGrid {
+        text-align: left; /* Thông tin chi tiết căn trái */
+        gap: 8px 15px;
+        margin-bottom: 20px;
+        /* Nếu màn hình quá nhỏ, chuyển thành 1 cột */
+        grid-template-columns: 1fr 1fr; 
+    }
+
+    /* 5. Media Grid (Voice Actors / Anime) */
+    .mediaGrid {
+        /* Giảm minmax xuống để hiển thị được 2 cột (hoặc 3 cột nhỏ) trên mobile */
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 15px;
+    }
+
+    .mediaCard img {
+        height: 160px; /* Giảm chiều cao ảnh poster tương ứng */
+    }
+    
+    .mediaSection h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+}
+
+/* ========================================
+   LIGHT MODE STYLES
+   ======================================== */
+.pageWrapper[data-theme="light"] {
+    background-color: #f5f7fa;
+    color: #2c3e50;
+}
+
+.pageWrapper[data-theme="light"] .loading {
+    color: #2c3e50;
+}
+
+.pageWrapper[data-theme="light"] .characterName {
+    color: #1a1a1a;
+}
+
+.pageWrapper[data-theme="light"] .nativeName {
+    color: #5a6c7d;
+}
+
+.pageWrapper[data-theme="light"] .extraInfoGrid strong {
+    color: #2c3e50;
+}
+
+.pageWrapper[data-theme="light"] .description {
+    color: #4a5568;
+}
+
+.pageWrapper[data-theme="light"] .spoiler {
+    background-color: #cbd5e0;
+    color: #cbd5e0;
+}
+
+.pageWrapper[data-theme="light"] .spoiler:hover {
+    background-color: #a0aec0;
+    color: #2c3e50;
+}
+
+.pageWrapper[data-theme="light"] .mediaSection h2 {
+    color: #2c3e50;
+}
+
+.pageWrapper[data-theme="light"] .mediaCard {
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+}
+
+.pageWrapper[data-theme="light"] .mediaCard:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e0;
+}
+
+.pageWrapper[data-theme="light"] .mediaCard p {
+    color: #2c3e50;
+}
+
+.pageWrapper[data-theme="light"] .characterImage {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
