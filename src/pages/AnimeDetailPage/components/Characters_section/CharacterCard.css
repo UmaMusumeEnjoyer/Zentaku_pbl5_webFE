@@ -1,8 +1,29 @@
 /* src/components/CharacterCard.css */
+
+/* =========================================
+   CSS VARIABLES FOR THEME SUPPORT
+   ========================================= */
+:root {
+  /* Dark Mode (default) */
+  --character-card-bg: #152232;
+  --character-card-border: rgba(255, 255, 255, 0.05);
+  --character-card-hover: #1c2e42;
+  --character-name-color: #fff;
+  --character-role-color: #a0aec0;
+}
+
+body[data-theme="light"] {
+  --character-card-bg: #ffffff;
+  --character-card-border: rgba(0, 0, 0, 0.1);
+  --character-card-hover: #f5f5f5;
+  --character-name-color: #1a1a1a;
+  --character-role-color: #6a6a6a;
+}
+
 .character-card {
   display: flex;
   justify-content: space-between;
-  background-color: #152232;
+  background-color: var(--character-card-bg);
   border-radius: 6px;
   overflow: hidden;
   
@@ -10,8 +31,9 @@
   height: auto; 
   min-height: 80px;
   
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--character-card-border);
   width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 .card-link {
@@ -28,7 +50,7 @@
 }
 
 .card-link:hover {
-    background-color: #1c2e42; 
+    background-color: var(--character-card-hover); 
 }
 
 .va-part {
@@ -61,7 +83,7 @@
 }
 
 .person-name {
-  color: #fff;
+  color: var(--character-name-color);
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 4px 0;
@@ -75,7 +97,7 @@
 }
 
 .person-role {
-  color: #a0aec0;
+  color: var(--character-role-color);
   font-size: 0.8rem;
   margin: 0;
   text-transform: capitalize;
