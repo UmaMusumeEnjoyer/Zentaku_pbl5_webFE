@@ -15,7 +15,7 @@ const StatusDistribution: React.FC<StatusDistributionProps> = ({ distribution })
 
   if (!distribution || distribution.length === 0) {
     // Thay thế text cứng bằng key
-    return <p>{t('AnimeDetail:status_distribution.no_data')}</p>;
+    return <p>{t('StatisticsSection:status_distribution.no_data')}</p>;
   }
 
   return (

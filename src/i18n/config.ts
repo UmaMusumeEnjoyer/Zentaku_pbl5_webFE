@@ -44,7 +44,7 @@ i18n
         NewsDetailPage: newsDetailPageJp,
         CharacterPage: characterPageJp,
         RankingSection: RankingSectionJp,
-        CharactersSecion: charactersSectionJp,
+        CharactersSection: charactersSectionJp,
         StaffSection: staffSectionJp,
         StatisticsSection: statisticsSectionJp,
         AnimeModal: AnimeModalJp,

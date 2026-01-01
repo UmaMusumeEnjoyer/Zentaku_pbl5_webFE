@@ -11,11 +11,11 @@ const ScoreDistribution: React.FC<ScoreDistributionProps> = ({ distribution }) =
   const { theme } = useTheme();
   
   // Khởi tạo translation hook
-  const { t } = useTranslation(['AnimeDetail', 'common']);
+  const { t } = useTranslation(['StatisticsSection', 'common']);
 
   if (!distribution || distribution.length === 0) {
     // Thay thế text cứng bằng key
-    return <p>{t('AnimeDetail:score_distribution.no_data')}</p>;
+    return <p>{t('StatisticsSection:score_distribution.no_data')}</p>;
   }
 
   return (

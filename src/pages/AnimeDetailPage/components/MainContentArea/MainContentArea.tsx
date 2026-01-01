@@ -55,7 +55,7 @@ const Trailer: React.FC<TrailerProps> = ({ trailerInfo }) => {
   const { t } = useTranslation(['MainContentArea']);
 
   if (!trailerInfo || !trailerInfo.id || trailerInfo.site !== 'youtube') {
-    return <p>{t('AnimeDetail:trailer.no_data')}</p>;
+    return <p>{t('MainContentArea:trailer.no_data')}</p>;
   }
   
   const embedUrl = `https://www.youtube.com/embed/${trailerInfo.id}`;
@@ -64,7 +64,7 @@ const Trailer: React.FC<TrailerProps> = ({ trailerInfo }) => {
     <div className="trailer-container">
       <iframe
         src={embedUrl}
-        title={t('AnimeDetail:trailer.iframe_title')}
+        title={t('MainContentArea:trailer.iframe_title')}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
@@ -108,28 +108,28 @@ const MainContentArea: React.FC<MainContentAreaProps> = ({ anime }) => {
     <main className={`main-content-area ${theme}`}>
       {/* Section titles are now translated using t()
       */}
-      <Section title={t('AnimeDetail:sections.characters')}>
+      <Section title={t('MainContentArea:sections.characters')}>
         <CharactersSection animeId={anime.id} />
       </Section>
       
-      <Section title={t('AnimeDetail:sections.staff')}>
+      <Section title={t('MainContentArea:sections.staff')}>
         <StaffSection animeId={anime.id} />
       </Section>
       
-      <Section title={t('AnimeDetail:sections.rankings')}>
+      <Section title={t('MainContentArea:sections.rankings')}>
         <RankingsSection rankings={(stats?.rankings as Ranking[]) || []} />
       </Section>
       
       <div className="distribution-container">
-        <Section title={t('AnimeDetail:sections.status_distribution')}>
+        <Section title={t('MainContentArea:sections.status_distribution')}>
           <StatusDistribution distribution={(stats?.status_distribution as StatusItem[]) || []} />
         </Section>
-        <Section title={t('AnimeDetail:sections.score_distribution')}>
+        <Section title={t('MainContentArea:sections.score_distribution')}>
           <ScoreDistribution distribution={(stats?.score_distribution as ScoreItem[]) || []} />
         </Section>
       </div>
       
-      <Section title={t('AnimeDetail:sections.trailer')}>
+      <Section title={t('MainContentArea:sections.trailer')}>
         <Trailer trailerInfo={anime.trailer} />
       </Section>
     </main>

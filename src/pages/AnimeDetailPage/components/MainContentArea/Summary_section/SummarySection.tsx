@@ -1,8 +1,8 @@
 import React from 'react';
-import EditorModal from '../AnimeModal/EditorModal'; 
+import EditorModal from '../../AnimeModal/EditorModal'; 
 import type { SummarySectionProps } from '@umamusumeenjoyer/shared-logic';
 import { useSummarySection } from '@umamusumeenjoyer/shared-logic';
-import { useTheme } from '../../../../context/ThemeContext';
+import { useTheme } from '../../../../../context/ThemeContext';
 import './SummarySection.css';
 
 const SummarySection: React.FC<SummarySectionProps> = ({ anime, hasBanner }) => {

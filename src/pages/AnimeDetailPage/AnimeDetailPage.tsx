@@ -6,7 +6,7 @@ import { useTheme } from '../../context/ThemeContext';
 import './AnimeDetailPage.css';
 
 // Import các component con (Đường dẫn tùy thuộc vào cấu trúc thư mục của bạn)
-import SummarySection from './components/Summary_section/SummarySection';
+import SummarySection from './components/MainContentArea/Summary_section/SummarySection';
 import InfoSidebar from './components/InfoSidebar/InfoSidebar';
 import MainContentArea from './components/MainContentArea/MainContentArea';
 
