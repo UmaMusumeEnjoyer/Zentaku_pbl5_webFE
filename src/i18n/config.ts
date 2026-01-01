@@ -15,7 +15,9 @@ import {
   charactersSectionEn,
   charactersSectionJp,
   staffSectionEn,
-  staffSectionJp
+  staffSectionJp,
+  statisticsSectionJp,
+  statisticsSectionEn
 
 } from '@umamusumeenjoyer/shared-logic';
 
@@ -35,7 +37,8 @@ i18n
         CharacterPage: characterPageEn,
         RankingSection: RankingSectionEn,
         CharactersSection: charactersSectionEn,
-        StaffSection: staffSectionEn
+        StaffSection: staffSectionEn,
+        StatisticsSection: statisticsSectionEn
       },
       jp: {
         common: commonJp,
@@ -44,7 +47,8 @@ i18n
         CharacterPage: characterPageJp,
         RankingSection: RankingSectionJp,
         CharactersSecion: charactersSectionJp,
-        StaffSection: staffSectionJp
+        StaffSection: staffSectionJp,
+        StatisticsSection: statisticsSectionJp
 
       },
     },
@@ -52,7 +56,7 @@ i18n
     fallbackLng: DEFAULT_LANG,
     defaultNS: DEFAULT_NS,
     ns: ['common', 'HomePage', 'NewsDetailPage', 'CharacterPage'
-      , 'RankingSection', 'CharactersSection', 'StaffSection'
+      , 'RankingSection', 'CharactersSection', 'StaffSection', 'StatisticsSection'
     ],
     interpolation: {
       escapeValue: false,
