@@ -10,6 +10,13 @@ import {
   newsDetailPageJp,
   characterPageEn,
   characterPageJp,
+  RankingSectionEn,
+  RankingSectionJp,
+  charactersSectionEn,
+  charactersSectionJp,
+  staffSectionEn,
+  staffSectionJp
+
 } from '@umamusumeenjoyer/shared-logic';
 
 export { LANGUAGES };
@@ -26,18 +33,27 @@ i18n
         HomePage: homePageEn,
         NewsDetailPage: newsDetailPageEn,
         CharacterPage: characterPageEn,
+        RankingSection: RankingSectionEn,
+        CharactersSection: charactersSectionEn,
+        StaffSection: staffSectionEn
       },
       jp: {
         common: commonJp,
         HomePage: homePageJp,
         NewsDetailPage: newsDetailPageJp,
         CharacterPage: characterPageJp,
+        RankingSection: RankingSectionJp,
+        CharactersSecion: charactersSectionJp,
+        StaffSection: staffSectionJp
+
       },
     },
     lng: localStorage.getItem('language') || DEFAULT_LANG,
     fallbackLng: DEFAULT_LANG,
     defaultNS: DEFAULT_NS,
-    ns: ['common', 'HomePage', 'NewsDetailPage', 'CharacterPage'],
+    ns: ['common', 'HomePage', 'NewsDetailPage', 'CharacterPage'
+      , 'RankingSection', 'CharactersSection', 'StaffSection'
+    ],
     interpolation: {
       escapeValue: false,
     },
