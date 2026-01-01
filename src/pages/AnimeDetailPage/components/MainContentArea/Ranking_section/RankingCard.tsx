@@ -1,7 +1,8 @@
 // src/components/RankingCard.tsx
 import React from 'react';
 import type { Ranking } from '@umamusumeenjoyer/shared-logic';
-import { useTranslation } from 'react-i18next'; // Hoặc hook từ shared-logic của bạn
+import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../../../../context/ThemeContext';
 import './RankingCard.css';
 
 interface RankingCardProps {
@@ -10,8 +11,9 @@ interface RankingCardProps {
 
 const RankingCard: React.FC<RankingCardProps> = ({ ranking }) => {
   const { t } = useTranslation('RankingSection');
+  const { theme } = useTheme(); // Sử dụng theme từ context
 
-  // Chọn icon dựa trên loại xếp hạng (Icon có thể giữ nguyên hoặc map config nếu cần thay đổi theo vùng)
+  // Chọn icon dựa trên loại xếp hạng
   const getIcon = () => {
     switch (ranking.type) {
       case 'RATED':
@@ -25,15 +27,10 @@ const RankingCard: React.FC<RankingCardProps> = ({ ranking }) => {
 
   // Tạo chuỗi mô tả xếp hạng dùng Interpolation
   const getContextText = () => {
-    // 1. Dịch season nếu có. Nếu không, trả về chuỗi rỗng.
-    // Giả sử ranking.season là 'winter', 'spring'... -> key là 'ranking.season.winter'
     const translatedSeason = ranking.season 
       ? t(`ranking.season.${ranking.season.toLowerCase()}`) 
       : '';
 
-    // 2. Sử dụng format string để ghép chuỗi thay vì cộng chuỗi thủ công
-    // Key: ranking.format
-    // Data: { rank: 5, context: "...", season: "Mùa Đông", year: 2024 }
     return t('ranking.format', {
       rank: ranking.rank,
       context: ranking.context,
@@ -43,7 +40,7 @@ const RankingCard: React.FC<RankingCardProps> = ({ ranking }) => {
   };
 
   return (
-    <div className="ranking-card">
+    <div className={`ranking-card ranking-card--${theme}`}>
       <span className="ranking-icon">{getIcon()}</span>
       <span className="ranking-text">{getContextText()}</span>
     </div>

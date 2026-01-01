@@ -1,8 +1,37 @@
 /* src/components/RankingsSection.css */
 .rankings-grid {
   display: flex;
-  flex-wrap: wrap; /* Cho phép các item tự xuống dòng */
+  flex-wrap: wrap;
   gap: 15px;
+  transition: background-color 0.3s ease;
+}
+
+/* Optional: Background styles nếu cần */
+.rankings-grid--dark {
+  /* Có thể thêm background hoặc styling khác nếu cần */
+}
+
+.rankings-grid--light {
+  /* Có thể thêm background hoặc styling khác nếu cần */
+}
+
+/* Styling cho thông báo không có rankings */
+.no-rankings-message {
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.no-rankings-message--dark {
+  background-color: #152232;
+  color: #c2c2c2;
+}
+
+.no-rankings-message--light {
+  background-color: #ffffff;
+  color: #4a4a4a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* =========================================
@@ -11,10 +40,13 @@
 
 @media (max-width: 768px) {
   .rankings-grid {
-    display: grid; /* Chuyển sang Grid để kiểm soát cột tốt hơn */
-    grid-template-columns: 1fr; /* 1 cột duy nhất, thẻ sẽ full width */
-    /* Nếu muốn 2 cột trên mobile thì đổi thành: grid-template-columns: 1fr 1fr; */
-    
-    gap: 10px; /* Giảm khoảng cách giữa các thẻ */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .no-rankings-message {
+    padding: 15px;
+    font-size: 0.9rem;
   }
 }

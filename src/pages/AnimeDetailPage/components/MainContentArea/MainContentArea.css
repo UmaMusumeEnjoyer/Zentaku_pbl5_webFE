@@ -51,13 +51,17 @@
   color: #1a1a1a;
 }
 
+/* =========================================
+   DISTRIBUTION CONTAINER - CHIA ĐỀU 50/50
+   ========================================= */
 .distribution-container {
   display: flex;
   gap: 30px;
 }
 
 .distribution-container .content-section {
-  flex: 1;
+  flex: 1; /* Mỗi section chiếm 50% */
+  min-width: 0; /* Prevent flex item overflow */
 }
 
 /* =========================================
@@ -69,6 +73,12 @@
   .distribution-container {
     flex-direction: column; /* Xếp chồng dọc */
     gap: 20px;
+  }
+  
+  /* Trên mobile, mỗi section sẽ chiếm 100% width */
+  .distribution-container .content-section {
+    flex: none; /* Reset flex để chiếm 100% */
+    width: 100%;
   }
   
   /* Lưu ý: Phần trailer iframe không cần CSS riêng ở đây nữa 

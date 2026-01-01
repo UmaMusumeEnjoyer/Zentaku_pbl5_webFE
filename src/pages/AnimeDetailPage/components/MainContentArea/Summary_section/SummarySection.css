@@ -3,7 +3,7 @@
 .summary-section {
   display: flex;
   gap: 30px;
-  margin-top: -120px; /* Mặc định kéo lên trên banner */
+  margin-top: -80px; /* Mặc định kéo lên trên banner */
   position: relative;
   padding-bottom: 30px;
   border-bottom: 1px solid #2d3748;

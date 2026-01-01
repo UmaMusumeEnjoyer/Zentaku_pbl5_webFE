@@ -16,7 +16,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: inset 0 -80px 50px -20px #0B1622;
+  /* ĐÃ XÓA: box-shadow: inset 0 -80px 50px -20px #0B1622; */
   width: 100%; /* Đảm bảo banner luôn full chiều rộng */
 }
 
