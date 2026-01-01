@@ -1,5 +1,16 @@
 /* src/pages/AnimeDetailPage.css */
 
+.anime-detail-page-loading,
+.anime-detail-page-error {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.anime-detail-page-loading.light,
+.anime-detail-page-error.light {
+  color: #1a1a1a;
+}
+
 .banner-image {
   height: 380px; 
   background-size: cover;
