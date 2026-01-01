@@ -8,6 +8,11 @@
   padding-bottom: 30px;
   border-bottom: 1px solid #2d3748;
   z-index: 10; /* Đảm bảo nổi lên trên các thành phần khác */
+  transition: border-color 0.3s ease;
+}
+
+.summary-section.light {
+  border-bottom-color: #d0d0d0;
 }
 
 /* Khi không có banner, dùng margin-top bình thường */
@@ -56,6 +61,11 @@
   font-style: italic;
   color: #a0aec0;
   margin: 0 0 5px 0;
+  transition: color 0.3s ease;
+}
+
+.summary-section.light .anime-tagline {
+  color: #666;
 }
 
 .summary-right .anime-title-main {
@@ -65,12 +75,22 @@
   word-wrap: break-word;
   font-weight: 800;
   line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.summary-section.light .anime-title-main {
+  color: #1a1a1a;
 }
 
 .summary-right .anime-description {
   line-height: 1.6;
   font-size: 0.95rem;
   color: #c2c2c2;
+  transition: color 0.3s ease;
+}
+
+.summary-section.light .anime-description {
+  color: #444;
 }
 
 /* =========================================
