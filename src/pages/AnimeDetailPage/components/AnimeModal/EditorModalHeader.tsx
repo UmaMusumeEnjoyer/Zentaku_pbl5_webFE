@@ -1,7 +1,8 @@
-// src/components/EditorModalHeader.js
+// src/components/EditorModal/EditorModalHeader.tsx
 import React from 'react';
+import type { EditorModalHeaderProps } from '@umamusumeenjoyer/shared-logic';
 
-const EditorModalHeader = ({ 
+const EditorModalHeader: React.FC<EditorModalHeaderProps> = ({ 
   anime, 
   onClose, 
   onSave, 

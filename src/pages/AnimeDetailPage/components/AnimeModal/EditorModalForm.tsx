@@ -1,23 +1,31 @@
-// src/components/EditorModalForm.js
+// src/components/EditorModal/EditorModalForm.tsx
 import React from 'react';
+import type { EditorModalFormProps } from '@umamusumeenjoyer/shared-logic';
+import { useTranslation } from 'react-i18next'; // Import hook
 
-const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
+const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChange, isEditMode }) => {
+  // Khởi tạo hook với namespace EditorModal
+  const { t } = useTranslation(['AnimeModal']);
+
   return (
     <div className="editor-modal-form-split-layout">
       <div className="editor-modal-form-left-col">
+        {/* --- STATUS GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>Status</label>
+          <label>{t('EditorModal:labels.status')}</label>
           <select name="status" value={formData.status} onChange={handleChange}>
-            <option value="plan_to_watch">Plan to watch</option>
-            <option value="watching">Watching</option>
-            <option value="completed">Completed</option>
-            <option value="dropped">Dropped</option>
-            <option value="on_hold">On Hold</option>
+            {/* Giữ nguyên value, chỉ dịch nội dung text hiển thị */}
+            <option value="plan_to_watch">{t('EditorModal:status_options.plan_to_watch')}</option>
+            <option value="watching">{t('EditorModal:status_options.watching')}</option>
+            <option value="completed">{t('EditorModal:status_options.completed')}</option>
+            <option value="dropped">{t('EditorModal:status_options.dropped')}</option>
+            <option value="on_hold">{t('EditorModal:status_options.on_hold')}</option>
           </select>
         </div>
 
+        {/* --- SCORE GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>Score</label>
+          <label>{t('EditorModal:labels.score')}</label>
           <input 
             type="number" 
             name="score" 
@@ -29,8 +37,9 @@ const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
           />
         </div>
 
+        {/* --- PROGRESS GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>Episode Progress</label>
+          <label>{t('EditorModal:labels.episode_progress')}</label>
           <input 
             type="number" 
             name="progress" 
@@ -39,8 +48,9 @@ const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
           />
         </div>
 
+        {/* --- START DATE GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>Start Date</label>
+          <label>{t('EditorModal:labels.start_date')}</label>
           <input 
             type="date" 
             name="startDate" 
@@ -51,8 +61,9 @@ const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
           />
         </div>
 
+        {/* --- FINISH DATE GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>Finish Date</label>
+          <label>{t('EditorModal:labels.finish_date')}</label>
           <input 
             type="date" 
             name="finishDate" 
@@ -63,8 +74,9 @@ const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
           />
         </div>
 
+        {/* --- REWATCHES GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>Total Rewatches</label>
+          <label>{t('EditorModal:labels.total_rewatches')}</label>
           <input 
             type="number" 
             name="rewatches" 
@@ -75,11 +87,12 @@ const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
           />
         </div>
 
+        {/* --- NOTES GROUP --- */}
         <div className="editor-modal-form-group full-width">
-          <label>Notes</label>
+          <label>{t('EditorModal:labels.notes')}</label>
           <textarea 
             name="notes" 
-            rows="3" 
+            rows={3} 
             value={formData.notes} 
             onChange={handleChange}
           ></textarea>
@@ -87,10 +100,15 @@ const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
       </div>
 
       <div className="editor-modal-form-right-col">
+        {/* --- CUSTOM LISTS --- */}
         <div className="editor-modal-form-group">
-          <label>Custom Lists</label>
-          <div className="editor-modal-list-placeholder">No custom anime lists</div>
+          <label>{t('EditorModal:labels.custom_lists')}</label>
+          <div className="editor-modal-list-placeholder">
+            {t('EditorModal:placeholders.no_custom_lists')}
+          </div>
         </div>
+        
+        {/* --- PRIVATE CHECKBOX --- */}
         <div className="editor-modal-form-group editor-modal-checkbox-group">
           <label style={{ opacity: isEditMode ? 0.5 : 1 }}>
             <input 
@@ -100,7 +118,7 @@ const EditorModalForm = ({ formData, handleChange, isEditMode }) => {
               onChange={handleChange}
               disabled={isEditMode}
             />
-            Private
+            {t('EditorModal:labels.private')}
           </label>
         </div>
       </div>

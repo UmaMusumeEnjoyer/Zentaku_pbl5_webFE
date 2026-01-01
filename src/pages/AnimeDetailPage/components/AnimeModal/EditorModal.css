@@ -21,6 +21,11 @@
   box-shadow: 0 14px 30px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
+  transition: color 0.3s ease;
+}
+
+.editor-modal-content.light {
+  color: #1a1a1a;
 }
 
 /* --- Header Styles --- */
@@ -36,6 +41,12 @@
   -webkit-backdrop-filter: blur(4px);
   border-radius: 8px 8px 0 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-header {
+  background-color: rgba(245, 245, 245, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .editor-modal-btn-close {
@@ -48,6 +59,11 @@
   font-size: 1.8rem;
   cursor: pointer;
   z-index: 10;
+  transition: color 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-btn-close {
+  color: rgba(0,0,0,0.6);
 }
 
 .editor-modal-header-info {
@@ -71,6 +87,12 @@
   margin-bottom: 10px;
   color: #fff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  transition: color 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-anime-title {
+  color: #1a1a1a;
+  text-shadow: none;
 }
 
 .editor-modal-header-actions {
@@ -121,6 +143,11 @@
   background-color: #151f2e;
   padding: 50px 25px 25px;
   border-radius: 0 0 8px 8px;
+  transition: background-color 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-body {
+  background-color: #ffffff;
 }
 
 .editor-modal-form-split-layout {
@@ -159,6 +186,11 @@
   color: #9fadbd;
   margin-bottom: 8px;
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-form-group label {
+  color: #555;
 }
 
 .editor-modal-form-group input:not([type="checkbox"]),
@@ -173,7 +205,16 @@
   font-family: inherit;
   font-size: 0.9rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-form-group input:not([type="checkbox"]),
+.editor-modal-content.light .editor-modal-form-group select,
+.editor-modal-content.light .editor-modal-form-group textarea,
+.editor-modal-content.light .editor-modal-list-placeholder {
+  background-color: #f5f5f5;
+  border-color: #d0d0d0;
+  color: #1a1a1a;
 }
 
 /* Fix icon lịch */
@@ -181,6 +222,12 @@
     filter: invert(1);
     opacity: 0.6;
     cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0);
+    opacity: 0.7;
 }
 
 .editor-modal-form-group input:focus,
@@ -195,6 +242,11 @@
     background-color: #0b1622;
 }
 
+.editor-modal-content.light .editor-modal-list-placeholder {
+    color: #888;
+    background-color: #f5f5f5;
+}
+
 .editor-modal-checkbox-group label {
     display: flex;
     align-items: center;
@@ -202,6 +254,11 @@
     cursor: pointer;
     color: #edf1f5;
     font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+.editor-modal-content.light .editor-modal-checkbox-group label {
+    color: #1a1a1a;
 }
 
 .editor-modal-checkbox-group input[type="checkbox"] {
@@ -239,6 +296,12 @@
   color: #5c6877 !important;
   cursor: not-allowed;
   border-color: #1a2533 !important;
+}
+
+.editor-modal-content.light .editor-modal-input-disabled {
+  background-color: #e8e8e8 !important;
+  color: #999 !important;
+  border-color: #ccc !important;
 }
 
 /* =========================================
