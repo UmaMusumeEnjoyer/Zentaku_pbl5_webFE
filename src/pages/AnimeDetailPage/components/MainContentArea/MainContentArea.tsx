@@ -58,7 +58,8 @@ const Trailer: React.FC<TrailerProps> = ({ trailerInfo }) => {
     return <p>{t('MainContentArea:trailer.no_data')}</p>;
   }
   
-  const embedUrl = `https://www.youtube.com/embed/${trailerInfo.id}`;
+  const youtubeBaseUrl = import.meta.env.VITE_YOUTUBE_EMBED_URL;
+  const embedUrl = `${youtubeBaseUrl}/${trailerInfo.id}`;
   
   return (
     <div className="trailer-container">

@@ -30,7 +30,7 @@ const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, onClose }
   if (!isOpen) return null;
 
   // URL ảnh mặc định (Hardcoded từ code cũ)
-  const defaultAvatar = "https://i.pinimg.com/736x/c0/27/be/c027bec07c9df60921dfd539bd.jpg";
+    const defaultAvatar = import.meta.env.VITE_DEFAULT_AVATAR_SEARCH;
 
   return (
     <div className="gs-overlay" onClick={onClose}>

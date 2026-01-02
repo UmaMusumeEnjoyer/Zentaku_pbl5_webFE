@@ -8,8 +8,8 @@ import { useAuth } from '../../context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { useHeader } from '@umamusumeenjoyer/shared-logic';
 
-const BACKEND_DOMAIN = 'https://doannguyen.pythonanywhere.com';
-const DEFAULT_AVATAR = "https://media.gametora.com/umamusume/characters/profile/1114.png";
+const BACKEND_DOMAIN = import.meta.env.VITE_BACKEND_DOMAIN;
+const DEFAULT_AVATAR = import.meta.env.VITE_DEFAULT_AVATAR_URL;
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
