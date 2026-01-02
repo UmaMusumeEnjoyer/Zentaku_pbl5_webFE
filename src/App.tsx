@@ -4,6 +4,8 @@ import { initSharedLogic } from '@umamusumeenjoyer/shared-logic';
 import './App.css';
 import './i18n/config'; // Import i18n configuration
 import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
+import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage';
 import CharacterPage from './pages/CharacterPage/CharacterPage';
@@ -41,14 +43,17 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/news/:id" element={<NewsDetailPage />} />
-            <Route path="/character/:id" element={<CharacterPage />} />
-            <Route path="/anime/:id" element={<AnimeDetailPage />} />
-          </Routes>
-        </main>
+        <AuthProvider>
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/news/:id" element={<NewsDetailPage />} />
+              <Route path="/character/:id" element={<CharacterPage />} />
+              <Route path="/anime/:id" element={<AnimeDetailPage />} />
+            </Routes>
+          </main>
+        </AuthProvider>
       </Router>
     </ThemeProvider>
   );

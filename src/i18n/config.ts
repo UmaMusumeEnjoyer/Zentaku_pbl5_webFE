@@ -14,7 +14,9 @@ import {
   statisticsSectionJp, statisticsSectionEn,
   AnimeModalEn, AnimeModalJp,
   MainContentAreaEn, MainContentAreaJp,
-  AnimeDetailEn, AnimeDetailJp
+  AnimeDetailEn, AnimeDetailJp,
+  HeaderEn, HeaderJp,
+  GlobalSearchEn, GlobalSearchJp
 
 } from '@umamusumeenjoyer/shared-logic';
 
@@ -38,7 +40,9 @@ i18n
         StatisticsSection: statisticsSectionEn,
         AnimeModal: AnimeModalEn,
         MainContentArea: MainContentAreaEn,
-        AnimeDetail: AnimeDetailEn
+        AnimeDetail: AnimeDetailEn,
+        Header: HeaderEn,
+        GlobalSearch: GlobalSearchEn
       },
       jp: {
         common: commonJp,
@@ -51,7 +55,9 @@ i18n
         StatisticsSection: statisticsSectionJp,
         AnimeModal: AnimeModalJp,
         MainContentArea: MainContentAreaJp,
-        AnimeDetail: AnimeDetailJp
+        AnimeDetail: AnimeDetailJp,
+        Header: HeaderJp,
+        GlobalSearch: GlobalSearchJp
       },
     },
     lng: localStorage.getItem('language') || DEFAULT_LANG,
@@ -59,7 +65,8 @@ i18n
     defaultNS: DEFAULT_NS,
     ns: ['common', 'HomePage', 'NewsDetailPage', 'CharacterPage'
       , 'RankingSection', 'CharactersSection', 'StaffSection', 'StatisticsSection'
-      , 'AnimeModal', 'MainContentArea', 'AnimeDetail'
+      , 'AnimeModal', 'MainContentArea', 'AnimeDetail', 'Header'
+      , 'GlobalSearch'
     ],
     interpolation: {
       escapeValue: false,

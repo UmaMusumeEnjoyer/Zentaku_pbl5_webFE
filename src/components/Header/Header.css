@@ -1,0 +1,129 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  background-color: #152232;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 100;
+  height: 70px;
+  transition: all 0.3s ease;
+}
+
+/* Light mode */
+.app-header[data-theme="light"] {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-left .logo a {
+  display: flex;
+  align-items: center;
+}
+
+.header-left .logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-center a {
+  color: #c2c2c2;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.header-center a:hover {
+  color: #fff;
+}
+
+/* Light mode links */
+.app-header[data-theme="light"] .header-center a {
+  color: #4a5568;
+}
+
+.app-header[data-theme="light"] .header-center a:hover {
+  color: #1a202c;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-theme,
+.btn-search {
+  background: none;
+  border: none;
+  color: #c2c2c2;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.2s;
+}
+
+.btn-theme:hover,
+.btn-search:hover {
+  color: #fff;
+}
+
+/* Light mode buttons */
+.app-header[data-theme="light"] .btn-theme,
+.app-header[data-theme="light"] .btn-search {
+  color: #4a5568;
+}
+
+.app-header[data-theme="light"] .btn-theme:hover,
+.app-header[data-theme="light"] .btn-search:hover {
+  color: #1a202c;
+}
+
+.btn-login, .btn-signup {
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-login {
+  color: #c2c2c2;
+  background: transparent;
+  border: 1px solid #c2c2c2;
+}
+
+.btn-login:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Light mode login button */
+.app-header[data-theme="light"] .btn-login {
+  color: #4a5568;
+  border-color: #cbd5e0;
+}
+
+.app-header[data-theme="light"] .btn-login:hover {
+  color: #1a202c;
+  border-color: #4a5568;
+}
+
+.btn-signup {
+  color: #fff;
+  background: #0066ff;
+  border: 1px solid #0066ff;
+}
+
+.btn-signup:hover {
+  background: #0052cc;
+}
