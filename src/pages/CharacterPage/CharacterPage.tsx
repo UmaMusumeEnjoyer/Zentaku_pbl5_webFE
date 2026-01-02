@@ -7,7 +7,6 @@ import styles from './CharacterPage.module.css';
 // Hooks & Types & Components
 import { useCharacter } from '@umamusumeenjoyer/shared-logic';
 import { Spoiler } from './Spoiler'; // Đảm bảo đường dẫn import đúng
-import ThemeToggle from '../../components/ThemeToggle/ThemeToggle';
 import { useTheme } from '../../context/ThemeContext';
 
 const CharacterPage: React.FC = () => {
@@ -61,9 +60,6 @@ const CharacterPage: React.FC = () => {
 
   return (
     <div className={styles.pageWrapper} data-theme={theme}>
-      <div className={styles.themeToggleContainer}>
-        <ThemeToggle />
-      </div>
       
       <div className={styles.mainContent}>
         {/* Cột trái: Ảnh */}

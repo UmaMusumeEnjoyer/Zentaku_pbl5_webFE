@@ -3,8 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useHomeLogic } from '@umamusumeenjoyer/shared-logic';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher';
-import ThemeToggle from '../../components/ThemeToggle/ThemeToggle';
 import './HomePage.css';
 
 const HomePage: React.FC = () => {
@@ -32,11 +30,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="homePage">
-      {/* Language Switcher & Theme Toggle */}
-      <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1000, display: 'flex', gap: '10px' }}>
-        <ThemeToggle />
-        <LanguageSwitcher />
-      </div>
+
 
       {/* --- PHẦN MỚI 1: Hero Section (Giống như ảnh bạn cung cấp) --- */}
       <section className="heroSection">
