@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage/HomePage';
 import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage';
 import CharacterPage from './pages/CharacterPage/CharacterPage';
 import AnimeDetailPage from './pages/AnimeDetailPage/AnimeDetailPage';
+import AuthPage from './pages/AuthPage/AuthPage';
 
 // Khởi tạo shared-logic với localStorage và API base URL
 initSharedLogic({
@@ -51,6 +52,8 @@ function App() {
               <Route path="/news/:id" element={<NewsDetailPage />} />
               <Route path="/character/:id" element={<CharacterPage />} />
               <Route path="/anime/:id" element={<AnimeDetailPage />} />
+              <Route path="/login" element={<AuthPage />} />
+              <Route path="/signup" element={<AuthPage />} />
             </Routes>
           </main>
         </AuthProvider>
