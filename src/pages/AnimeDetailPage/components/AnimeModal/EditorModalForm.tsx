@@ -12,20 +12,20 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
       <div className="editor-modal-form-left-col">
         {/* --- STATUS GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>{t('EditorModal:labels.status')}</label>
+          <label>{t('AnimeModal:labels.status')}</label>
           <select name="status" value={formData.status} onChange={handleChange}>
             {/* Giữ nguyên value, chỉ dịch nội dung text hiển thị */}
-            <option value="plan_to_watch">{t('EditorModal:status_options.plan_to_watch')}</option>
-            <option value="watching">{t('EditorModal:status_options.watching')}</option>
-            <option value="completed">{t('EditorModal:status_options.completed')}</option>
-            <option value="dropped">{t('EditorModal:status_options.dropped')}</option>
-            <option value="on_hold">{t('EditorModal:status_options.on_hold')}</option>
+            <option value="plan_to_watch">{t('AnimeModal:status_options.plan_to_watch')}</option>
+            <option value="watching">{t('AnimeModal:status_options.watching')}</option>
+            <option value="completed">{t('AnimeModal:status_options.completed')}</option>
+            <option value="dropped">{t('AnimeModal:status_options.dropped')}</option>
+            <option value="on_hold">{t('AnimeModal:status_options.on_hold')}</option>
           </select>
         </div>
 
         {/* --- SCORE GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>{t('EditorModal:labels.score')}</label>
+          <label>{t('AnimeModal:labels.score')}</label>
           <input 
             type="number" 
             name="score" 
@@ -39,7 +39,7 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
 
         {/* --- PROGRESS GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>{t('EditorModal:labels.episode_progress')}</label>
+          <label>{t('AnimeModal:labels.episode_progress')}</label>
           <input 
             type="number" 
             name="progress" 
@@ -50,7 +50,7 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
 
         {/* --- START DATE GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>{t('EditorModal:labels.start_date')}</label>
+          <label>{t('AnimeModal:labels.start_date')}</label>
           <input 
             type="date" 
             name="startDate" 
@@ -63,7 +63,7 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
 
         {/* --- FINISH DATE GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>{t('EditorModal:labels.finish_date')}</label>
+          <label>{t('AnimeModal:labels.finish_date')}</label>
           <input 
             type="date" 
             name="finishDate" 
@@ -76,7 +76,7 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
 
         {/* --- REWATCHES GROUP --- */}
         <div className="editor-modal-form-group">
-          <label>{t('EditorModal:labels.total_rewatches')}</label>
+          <label>{t('AnimeModal:labels.total_rewatches')}</label>
           <input 
             type="number" 
             name="rewatches" 
@@ -89,7 +89,7 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
 
         {/* --- NOTES GROUP --- */}
         <div className="editor-modal-form-group full-width">
-          <label>{t('EditorModal:labels.notes')}</label>
+          <label>{t('AnimeModal:labels.notes')}</label>
           <textarea 
             name="notes" 
             rows={3} 
@@ -102,9 +102,9 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
       <div className="editor-modal-form-right-col">
         {/* --- CUSTOM LISTS --- */}
         <div className="editor-modal-form-group">
-          <label>{t('EditorModal:labels.custom_lists')}</label>
+          <label>{t('AnimeModal:labels.custom_lists')}</label>
           <div className="editor-modal-list-placeholder">
-            {t('EditorModal:placeholders.no_custom_lists')}
+            {t('AnimeModal:placeholders.no_custom_lists')}
           </div>
         </div>
         
@@ -118,7 +118,7 @@ const EditorModalForm: React.FC<EditorModalFormProps> = ({ formData, handleChang
               onChange={handleChange}
               disabled={isEditMode}
             />
-            {t('EditorModal:labels.private')}
+            {t('AnimeModal:labels.private')}
           </label>
         </div>
       </div>

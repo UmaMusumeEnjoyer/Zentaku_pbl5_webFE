@@ -45,7 +45,7 @@
 }
 
 .editor-modal-content.light .editor-modal-header {
-  background-color: rgba(245, 245, 245, 0.95);
+  background-color: rgba(245, 245, 245, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -71,7 +71,6 @@
   align-items: flex-end;
   gap: 20px;
   position: relative;
-  top: 40px;
   z-index: 2;
 }
 
@@ -91,8 +90,9 @@
 }
 
 .editor-modal-content.light .editor-modal-anime-title {
-  color: #1a1a1a;
+  color: #ffffff;
   text-shadow: none;
+  font-weight: 700;
 }
 
 .editor-modal-header-actions {
