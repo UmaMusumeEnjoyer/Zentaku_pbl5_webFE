@@ -1,34 +1,95 @@
 // src/context/AuthContext.tsx
-import React, { createContext, useContext, useEffect,type ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
+import { useAuth as useSharedAuth, type UseAuthReturn } from '@umamusumeenjoyer/shared-logic';
+import { authService } from '@umamusumeenjoyer/shared-logic';
 
-// 1. Import hook và types từ file shared-logic bạn vừa tạo
-// (Giả sử bạn để file đó ở đường dẫn này, hãy điều chỉnh nếu khác)
-import { useAuth as useSharedAuth, type UseAuthReturn } from '@umamusumeenjoyer/shared-logic'; 
-
-// Tạo Context với kiểu dữ liệu là giá trị trả về của useAuth hoặc null
 const AuthContext = createContext<UseAuthReturn | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  // 2. Sử dụng logic từ hook shared
   const authLogic = useSharedAuth();
-  
-  // 3. LOGIC BỔ SUNG: Khôi phục phiên đăng nhập khi F5 (Refresh trang)
-  // Hook useAuth của bạn có login/logout nhưng chưa có đoạn tự chạy khi mount component
+  const refreshTimerRef = useRef<number | null>(null);
+
+  // Hàm refresh token thủ công
+  const refreshAccessToken = async () => {
+    try {
+      const refreshToken = localStorage.getItem('refreshToken');
+      if (!refreshToken) return;
+
+      const response = await authService.refreshToken(refreshToken);
+      const newAccessToken = response.data.access;
+      const newRefreshToken = response.data.refresh;
+
+      localStorage.setItem('authToken', newAccessToken);
+      if (newRefreshToken) {
+        localStorage.setItem('refreshToken', newRefreshToken);
+      }
+
+      console.log('Token refreshed successfully');
+    } catch (error) {
+      console.error('Failed to refresh token:', error);
+      authLogic.logout();
+    }
+  };
+
+  // Setup timer để refresh token định kỳ (mỗi 25 phút nếu token hết hạn sau 30 phút)
+  const setupRefreshTimer = () => {
+    // Clear timer cũ nếu có
+    if (refreshTimerRef.current) {
+      clearInterval(refreshTimerRef.current);
+    }
+
+    // Refresh mỗi 25 phút (trước khi token hết hạn)
+    refreshTimerRef.current = window.setInterval(() => {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        refreshAccessToken();
+      }
+    }, 10 * 60 * 1000); // 25 phút
+  };
+
+  // Khôi phục phiên đăng nhập khi F5
   useEffect(() => {
     const initAuth = async () => {
       const token = localStorage.getItem('authToken');
       const username = localStorage.getItem('username');
 
-      // Nếu có token và username trong storage nhưng chưa có user trong state
       if (token && username && !authLogic.user) {
-        // Gọi hàm fetchUserInfo có sẵn trong hook của bạn
         await authLogic.fetchUserInfo(username);
+        setupRefreshTimer();
       }
     };
 
+    // Lắng nghe event logout từ apiClient
+    const handleLogout = () => {
+      authLogic.logout();
+      if (refreshTimerRef.current) {
+        clearInterval(refreshTimerRef.current);
+      }
+    };
+
+    window.addEventListener('auth:logout', handleLogout);
     initAuth();
+
+    return () => {
+      window.removeEventListener('auth:logout', handleLogout);
+      if (refreshTimerRef.current) {
+        clearInterval(refreshTimerRef.current);
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Chỉ chạy 1 lần khi App mount
+  }, []);
+
+  // Setup timer khi user login
+  useEffect(() => {
+    if (authLogic.user) {
+      setupRefreshTimer();
+    } else {
+      if (refreshTimerRef.current) {
+        clearInterval(refreshTimerRef.current);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authLogic.user]);
 
   return (
     <AuthContext.Provider value={authLogic}>
@@ -37,7 +98,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// 4. Hook để các component con sử dụng (Header, AuthPage...)
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
