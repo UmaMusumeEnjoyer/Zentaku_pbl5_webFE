@@ -7,13 +7,37 @@ import { useTheme } from '../../../../context/ThemeContext';
 import { useTranslation } from 'react-i18next'; // Import hook
 import { InfoBlock, InfoListBlock } from './InfoComponents';
 
+
+
 const InfoSidebar: React.FC<InfoSidebarProps> = ({ anime }) => {
   // Lấy các hàm helper và dữ liệu đã tính toán từ Hook
   const { formatDate, airingString } = useInfoSidebar(anime);
   const { theme } = useTheme();
   
   // Khởi tạo translation hook
-  const { t } = useTranslation(['AnimeDetail', 'common']);
+  const { t, i18n } = useTranslation(['AnimeDetail', 'common']);
+
+  const formatDateByLanguage = (dateString?: string) => {
+        if (!dateString) return t('info.not_available');
+        
+        const date = new Date(dateString);
+        const currentLang = i18n.language;
+        
+        if (currentLang === 'jp') {
+            // Format Nhật: YYYY年MM月DD日
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return `${year}年${month}月${day}日`;
+        } else {
+            // Format Anh: Month DD, YYYY
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+    };
 
   return (
     <aside className={`info-sidebar ${theme}`}>
@@ -48,11 +72,11 @@ const InfoSidebar: React.FC<InfoSidebarProps> = ({ anime }) => {
       {/* Ngày tháng */}
       <InfoBlock 
         label={t('AnimeDetail:sidebar.start_date')} 
-        value={formatDate(anime.starting_time)} 
+        value={formatDateByLanguage(anime.starting_time)} 
       />
       <InfoBlock 
         label={t('AnimeDetail:sidebar.end_date')} 
-        value={formatDate(anime.ending_time)} 
+        value={formatDateByLanguage(anime.ending_time)} 
       />
       
       {/* Thông tin mùa và điểm số */}
