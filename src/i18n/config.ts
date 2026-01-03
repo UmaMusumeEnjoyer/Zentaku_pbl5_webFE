@@ -18,7 +18,8 @@ import {
   HeaderEn, HeaderJp,
   GlobalSearchEn, GlobalSearchJp,
   AuthEn, AuthJp,
-  StaffPageEn, StaffPageJp
+  StaffPageEn, StaffPageJp,
+  AnimeSearchEN, AnimeSearchJP
 
 } from '@umamusumeenjoyer/shared-logic';
 
@@ -46,7 +47,8 @@ i18n
         Header: HeaderEn,
         GlobalSearch: GlobalSearchEn,
         Auth: AuthEn,
-        StaffPage: StaffPageEn
+        StaffPage: StaffPageEn,
+        AnimeSearch: AnimeDetailEn
       },
       jp: {
         common: commonJp,
@@ -63,7 +65,8 @@ i18n
         Header: HeaderJp,
         GlobalSearch: GlobalSearchJp,
         Auth: AuthJp,
-        StaffPage: StaffPageJp
+        StaffPage: StaffPageJp,
+        AnimeSearch: AnimeDetailJp
       },
     },
     lng: localStorage.getItem('language') || DEFAULT_LANG,
@@ -72,7 +75,7 @@ i18n
     ns: ['common', 'HomePage', 'NewsDetailPage', 'CharacterPage'
       , 'RankingSection', 'CharactersSection', 'StaffSection', 'StatisticsSection'
       , 'AnimeModal', 'MainContentArea', 'AnimeDetail', 'Header'
-      , 'GlobalSearch', 'Auth', 'StaffPage'
+      , 'GlobalSearch', 'Auth', 'StaffPage', 'AnimeSearch'
     ],
     interpolation: {
       escapeValue: false,

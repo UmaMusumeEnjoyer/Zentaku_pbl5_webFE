@@ -1,15 +1,20 @@
 // src/pages/AnimeSearch/components/FilterBar.tsx
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './FilterBar.css';
 import { FaSearch, FaSyncAlt } from 'react-icons/fa';
-import { filterData } from '@umamusumeenjoyer/shared-logic';
-import {type FilterBarProps } from '@umamusumeenjoyer/shared-logic';
+import { 
+  filterData, 
+  GENRE_I18N_MAP,
+  type FilterBarProps 
+} from '@umamusumeenjoyer/shared-logic';
 import { useFilterBar } from '@umamusumeenjoyer/shared-logic';
 import { useTheme } from '../../../context/ThemeContext';
 
 const FilterBar: React.FC<FilterBarProps> = ({ onSearch, activeFilters }) => {
   const { theme } = useTheme();
+  const { t } = useTranslation('AnimeSearch');
   
   const {
     filters,
@@ -24,11 +29,11 @@ const FilterBar: React.FC<FilterBarProps> = ({ onSearch, activeFilters }) => {
     <div className={`filter-bar container filter-bar--${theme}`}>
       {/* 1. SEARCH */}
       <div className="filter-group filter-search">
-        <label>Search</label>
+        <label>{t('filterBar.labels.search')}</label>
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search anime..."
+            placeholder={t('filterBar.placeholder.search')}
             value={filters.keyword}
             onChange={(e) => handleInputChange(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -41,26 +46,31 @@ const FilterBar: React.FC<FilterBarProps> = ({ onSearch, activeFilters }) => {
 
       {/* 2. GENRES */}
       <div className="filter-group filter-genres">
-        <label>Genres</label>
+        <label>{t('filterBar.labels.genres')}</label>
         <select 
           value={filters.genre} 
           onChange={(e) => handleFilterChange('genre', e.target.value)}
         >
-          <option value="Any">Any</option>
-          {filterData.genres.map((g) => (
-            <option key={g} value={g}>{g}</option>
-          ))}
+          <option value="Any">{t('filterBar.options.any')}</option>
+          {filterData.genres.map((g) => {
+            const i18nKey = GENRE_I18N_MAP[g];
+            return (
+              <option key={g} value={g}>
+                {t(`filterBar.options.genres.${i18nKey}`)}
+              </option>
+            );
+          })}
         </select>
       </div>
 
       {/* 3. YEAR */}
       <div className="filter-group filter-year">
-        <label>Year</label>
+        <label>{t('filterBar.labels.year')}</label>
         <select 
           value={filters.year} 
           onChange={(e) => handleFilterChange('year', e.target.value)}
         >
-          <option value="Any">Any</option>
+          <option value="Any">{t('filterBar.options.any')}</option>
           {filterData.years.map((y) => (
             <option key={y} value={y}>{y}</option>
           ))}
@@ -69,55 +79,63 @@ const FilterBar: React.FC<FilterBarProps> = ({ onSearch, activeFilters }) => {
 
       {/* 4. SEASON */}
       <div className="filter-group filter-season">
-        <label>Season</label>
+        <label>{t('filterBar.labels.season')}</label>
         <select 
           value={filters.season} 
           onChange={(e) => handleFilterChange('season', e.target.value)}
         >
-          <option value="Any">Any</option>
+          <option value="Any">{t('filterBar.options.any')}</option>
           {filterData.seasons.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
+            <option key={item.value} value={item.value}>
+              {t(`filterBar.options.seasons.${item.label}`)}
+            </option>
           ))}
         </select>
       </div>
 
       {/* 5. FORMAT */}
       <div className="filter-group filter-format">
-        <label>Format</label>
+        <label>{t('filterBar.labels.format')}</label>
         <select 
           value={filters.format} 
           onChange={(e) => handleFilterChange('format', e.target.value)}
         >
-          <option value="Any">Any</option>
+          <option value="Any">{t('filterBar.options.any')}</option>
           {filterData.formats.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
+            <option key={item.value} value={item.value}>
+              {t(`filterBar.options.formats.${item.label}`)}
+            </option>
           ))}
         </select>
       </div>
 
       {/* 6. STATUS */}
       <div className="filter-group filter-status">
-        <label>Status</label>
+        <label>{t('filterBar.labels.status')}</label>
         <select 
           value={filters.status} 
           onChange={(e) => handleFilterChange('status', e.target.value)}
         >
-          <option value="Any">Any</option>
+          <option value="Any">{t('filterBar.options.any')}</option>
           {filterData.statuses.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
+            <option key={item.value} value={item.value}>
+              {t(`filterBar.options.statuses.${item.label}`)}
+            </option>
           ))}
         </select>
       </div>
 
       {/* 7. SORT */}
       <div className="filter-group filter-sort">
-        <label>Sort</label>
+        <label>{t('filterBar.labels.sort')}</label>
         <select 
           value={filters.sort} 
           onChange={(e) => handleFilterChange('sort', e.target.value)}
         >
           {filterData.sorts.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
+            <option key={item.value} value={item.value}>
+              {t(`filterBar.options.sorts.${item.label}`)}
+            </option>
           ))}
         </select>
       </div>
@@ -127,9 +145,10 @@ const FilterBar: React.FC<FilterBarProps> = ({ onSearch, activeFilters }) => {
         <button 
           onClick={handleClear}
           className="btn-clear-filter"
-          title="Reset Filters"
+          title={t('filterBar.buttons.clearTitle')}
         >
-          <FaSyncAlt style={{ marginRight: '5px' }} /> Clear
+          <FaSyncAlt style={{ marginRight: '5px' }} /> 
+          {t('filterBar.buttons.clear')}
         </button>
       </div>
     </div>
