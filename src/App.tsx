@@ -11,6 +11,7 @@ import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage';
 import CharacterPage from './pages/CharacterPage/CharacterPage';
 import AnimeDetailPage from './pages/AnimeDetailPage/AnimeDetailPage';
 import AuthPage from './pages/AuthPage/AuthPage';
+import StaffPage from './pages/StaffPage/StaffPage';
 
 // Xác định API base URL dựa trên environment
 const isDevelopment = import.meta.env.DEV;
@@ -64,6 +65,7 @@ function App() {
               <Route path="/anime/:id" element={<AnimeDetailPage />} />
               <Route path="/login" element={<AuthPage />} />
               <Route path="/signup" element={<AuthPage />} />
+              <Route path="/staff/:id" element={<StaffPage />} />
             </Routes>
           </main>
         </AuthProvider>
