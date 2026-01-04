@@ -1,4 +1,24 @@
-/* src/components/SectionGrid.css */
+/* =========================================
+   THEME VARIABLES
+   ========================================= */
+
+.anime-section.light {
+  --section-title-color: #4a5568;
+  --view-all-color: #5a6c7d;
+  --view-all-hover-color: #2d3748;
+  --view-all-hover-bg: #e2e8f0;
+}
+
+.anime-section.dark {
+  --section-title-color: #8BA0B2;
+  --view-all-color: #8BA0B2;
+  --view-all-hover-color: #ffffff;
+  --view-all-hover-bg: #151f2e;
+}
+
+/* =========================================
+   SECTION GRID STYLES
+   ========================================= */
 
 .anime-section {
   margin-bottom: 50px;
@@ -14,15 +34,16 @@
 .section-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #8BA0B2;
+  color: var(--section-title-color);
   text-transform: capitalize;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
 .view-all-btn {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #8BA0B2;     /* Màu xám xanh nhạt */
+  color: var(--view-all-color);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -35,8 +56,8 @@
 }
 
 .view-all-btn:hover {
-  color: #ffffff;           /* Sáng lên khi hover */
-  background-color: #151f2e; /* Thêm nền tối nhẹ để nổi bật nút */
+  color: var(--view-all-hover-color);
+  background-color: var(--view-all-hover-bg);
 }
 
 .anime-grid {
@@ -57,6 +78,7 @@
   min-width: 0;
   height: 100%;
 }
+
 /* =========================================
    [RESPONSIVE] MOBILE ADJUSTMENTS
    ========================================= */
@@ -70,30 +92,26 @@
   /* [CHỈNH SỬA MẠNH] Ép buộc layout hàng ngang */
   .section-header {
     display: flex !important;
-    flex-direction: row !important; /* Bắt buộc xếp ngang */
-    justify-content: space-between !important; /* Đẩy tiêu đề sang trái, nút sang phải */
-    align-items: center !important; /* Căn giữa theo chiều dọc */
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     width: 100%;
     margin-bottom: 15px;
   }
 
   .section-title {
     font-size: 1.1rem; 
-    margin: 0 !important; /* Xóa margin mặc định của thẻ h2 */
-    flex: 1;              /* Chiếm khoảng trống thừa */
-    text-align: left;     /* Căn trái chữ */
+    margin: 0 !important;
+    flex: 1;
+    text-align: left;
   }
 
   .view-all-btn {
     font-size: 0.75rem;
     padding: 6px 12px;
     white-space: nowrap;
-    
-    /* Đảm bảo nút nằm sát bên phải */
     margin-left: 10px;
     margin-right: 0;
-    
-    /* Ngăn nút bị co lại nếu tiêu đề quá dài */
     flex-shrink: 0; 
   }
 
