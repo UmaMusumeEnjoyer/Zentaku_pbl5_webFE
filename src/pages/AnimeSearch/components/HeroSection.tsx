@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+//import { Link } from 'react-router-dom';
+import { type HeroSectionProps } from '@umamusumeenjoyer/shared-logic';
+import { useHeroSection } from '@umamusumeenjoyer/shared-logic';
+import { useTheme } from '../../../context/ThemeContext';
 import './HeroSection.css';
 
-const HeroSection = ({ slides }) => {
-  const [current, setCurrent] = useState(0);
-  const length = slides ? slides.length : 0;
+const HeroSection: React.FC<HeroSectionProps> = ({ slides }) => {
+  // Kết nối với ViewModel
+  const { current, moveDot, hasSlides } = useHeroSection(slides);
+  const { theme } = useTheme();
 
-  useEffect(() => {
-    if (length === 0) return;
-    const timer = setInterval(() => {
-      setCurrent(current === length - 1 ? 0 : current + 1);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, [current, length]);
-
-  const moveDot = (index) => {
-    setCurrent(index);
-  };
-
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  // Guard clause: Nếu không có slide thì không render gì cả (logic từ file gốc)
+  if (!hasSlides) {
     return null;
   }
 
   return (
-    <div className="hero-slider">
+    <div className={`hero-slider ${theme}`}>
       {slides.map((slide, index) => (
         <div
           className={index === current ? 'slide active' : 'slide'}
@@ -41,13 +34,13 @@ const HeroSection = ({ slides }) => {
                 <p className="hero-description">{slide.description}</p>
                 
                 <div className="hero-actions">
-                  <Link 
+                  {/* <Link 
                     to={`/anime/${slide.id}`} 
                     className="btn btn-primary"
                     style={{ textDecoration: 'none' }}
                   >
                     <i className="fas fa-play"></i> See details
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </>
@@ -56,11 +49,14 @@ const HeroSection = ({ slides }) => {
       ))}
 
       <div className="slider-dots">
-        {slides.map((item, index) => (
+        {slides.map((_, index) => (
           <div
             key={index}
             onClick={() => moveDot(index)}
             className={current === index ? "dot active" : "dot"}
+            role="button"
+            tabIndex={0}
+            aria-label={`Go to slide ${index + 1}`}
           ></div>
         ))}
       </div>
