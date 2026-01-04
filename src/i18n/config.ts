@@ -48,7 +48,7 @@ i18n
         GlobalSearch: GlobalSearchEn,
         Auth: AuthEn,
         StaffPage: StaffPageEn,
-        AnimeSearch: AnimeDetailEn
+        AnimeSearch: AnimeSearchEN
       },
       jp: {
         common: commonJp,
@@ -66,7 +66,7 @@ i18n
         GlobalSearch: GlobalSearchJp,
         Auth: AuthJp,
         StaffPage: StaffPageJp,
-        AnimeSearch: AnimeDetailJp
+        AnimeSearch: AnimeSearchJP
       },
     },
     lng: localStorage.getItem('language') || DEFAULT_LANG,

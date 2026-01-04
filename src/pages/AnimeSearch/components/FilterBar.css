@@ -65,7 +65,7 @@
    ========================================= */
 
 .filter-search { 
-  width: 100%; 
+  width: 100%;
 }
 
 .search-box { 
@@ -255,5 +255,16 @@
     grid-column: 2 / 3 !important;
     width: 100%;
     margin-top: 5px;
+  }
+
+  .search-box input,
+  .filter-group select {
+    font-size: 13px;
+    height: 38px;
+  }
+  
+  .filter-group label {
+    font-size: 0.75rem;
+    margin-bottom: 2px;
   }
 }

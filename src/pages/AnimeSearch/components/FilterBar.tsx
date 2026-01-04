@@ -23,7 +23,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ onSearch, activeFilters }) => {
     handleFilterChange,
     handleClear,
     handleKeyDown,
-  } = useFilterBar({ onSearch, activeFilters });
+  } = useFilterBar({ onSearch, activeFilters: activeFilters??undefined});
 
   return (
     <div className={`filter-bar container filter-bar--${theme}`}>

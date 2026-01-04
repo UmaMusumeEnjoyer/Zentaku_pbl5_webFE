@@ -2,13 +2,11 @@ import React from 'react';
 //import { Link } from 'react-router-dom';
 import { type HeroSectionProps } from '@umamusumeenjoyer/shared-logic';
 import { useHeroSection } from '@umamusumeenjoyer/shared-logic';
-import { useTheme } from '../../../context/ThemeContext';
 import './HeroSection.css';
 
 const HeroSection: React.FC<HeroSectionProps> = ({ slides }) => {
   // Kết nối với ViewModel
   const { current, moveDot, hasSlides } = useHeroSection(slides);
-  const { theme } = useTheme();
 
   // Guard clause: Nếu không có slide thì không render gì cả (logic từ file gốc)
   if (!hasSlides) {
@@ -16,7 +14,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ slides }) => {
   }
 
   return (
-    <div className={`hero-slider ${theme}`}>
+    <div className="hero-slider">
       {slides.map((slide, index) => (
         <div
           className={index === current ? 'slide active' : 'slide'}
