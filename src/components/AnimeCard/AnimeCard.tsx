@@ -1,6 +1,7 @@
 // src/components/AnimeCard.tsx
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../context/ThemeContext';
 import './AnimeCard.css';
 
@@ -19,11 +20,15 @@ interface AnimeCardProps {
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
   const { theme } = useTheme();
+  const { i18n } = useTranslation();
   
-  // Gọi các hàm logic để lấy dữ liệu
-  const title = getAnimeTitle(anime);
-  const linkId = getAnimeLinkId(anime);
-  const displayInfo = getAnimeDisplayInfo(anime);
+  // Lấy ngôn ngữ hiện tại
+  const currentLanguage = i18n.language as 'en' | 'jp';
+  
+  // Gọi các hàm logic để lấy dữ liệu - useMemo để re-calculate khi language thay đổi
+  const title = useMemo(() => getAnimeTitle(anime, currentLanguage), [anime, currentLanguage]);
+  const linkId = useMemo(() => getAnimeLinkId(anime), [anime]);
+  const displayInfo = useMemo(() => getAnimeDisplayInfo(anime), [anime]);
 
   // Logic class giao diện
   const detailsClass = displayInfo ? 'anime-details' : 'anime-details no-info';
